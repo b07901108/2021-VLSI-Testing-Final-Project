@@ -1,0 +1,20 @@
+./atpg -tdfsim ../pattern/c17.pat  ../sample_circuits/c17.ckt
+./atpg -tdfsim ../pattern/c432.pat  ../sample_circuits/c432.ckt
+./atpg -tdfsim ../pattern/c499.pat  ../sample_circuits/c499.ckt
+./atpg -tdfsim ../pattern/c880.pat  ../sample_circuits/c880.ckt
+./atpg -tdfsim ../pattern/c1355.pat  ../sample_circuits/c1355.ckt
+./atpg -tdfsim ../pattern/c2670.pat  ../sample_circuits/c2670.ckt
+./atpg -tdfsim ../pattern/c3540.pat  ../sample_circuits/c3540.ckt
+./atpg -tdfsim ../pattern/c6288.pat  ../sample_circuits/c6288.ckt
+./atpg -tdfsim ../pattern/c7552.pat  ../sample_circuits/c7552.ckt
+#============
+#./atpg -tdfsim ../tdf_patterns/c17.pat  ../sample_circuits/c17.ckt
+#./atpg -tdfsim ../tdf_patterns/c432.pat  ../sample_circuits/c432.ckt
+#./atpg -tdfsim ../tdf_patterns/c499.pat  ../sample_circuits/c499.ckt
+#./atpg -tdfsim ../tdf_patterns/c880.pat  ../sample_circuits/c880.ckt
+#./atpg -tdfsim ../tdf_patterns/c1355.pat  ../sample_circuits/c1355.ckt
+#./atpg -tdfsim ../tdf_patterns/c2670.pat  ../sample_circuits/c2670.ckt
+#./atpg -tdfsim ../tdf_patterns/c3540.pat  ../sample_circuits/c3540.ckt
+#./atpg -tdfsim ../tdf_patterns/c6288.pat  ../sample_circuits/c6288.ckt
+#./atpg -tdfsim ../tdf_patterns/c7552.pat  ../sample_circuits/c7552.ckt
+
