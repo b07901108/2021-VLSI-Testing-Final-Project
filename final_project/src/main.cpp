@@ -35,6 +35,12 @@ int main(int argc, char *argv[]) {
       vetFile = string(argv[i + 1]);
       atpg.set_tdfsim_only(true);
       i += 2;
+    } else if (strcmp(argv[i], "-tdfatpg") == 0) {
+        atpg.set_tdfatpg(true);
+        ++i;
+    } else if (strcmp(argv[i], "-compression") == 0) {
+        atpg.set_compression(true);
+        ++i;
     }
       // for N-detect fault simulation
     else if (strcmp(argv[i], "-ndet") == 0) {
@@ -106,6 +112,14 @@ void ATPG::set_fsim_only(const bool &b) {
 
 void ATPG::set_tdfsim_only(const bool &b) {
   this->tdfsim_only = b;
+}
+
+void ATPG::set_tdfatpg(const bool &b) {
+  this->is_tdfatpg = b;
+}
+
+void ATPG::set_compression(const bool &b) {
+  this->has_compression = b;
 }
 
 void ATPG::set_total_attempt_num(const int &i) {

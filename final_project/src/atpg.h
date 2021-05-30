@@ -72,6 +72,8 @@ class ATPG {
   void read_vectors(const string &);
   void set_total_attempt_num(const int &);
   void set_backtrack_limit(const int &);
+  void set_tdfatpg(const bool &);
+  void set_compression(const bool &);
 
   /* defined in input.cpp */
   void input(const string &);
@@ -135,6 +137,8 @@ class ATPG {
   int total_attempt_num;               /* number of test generation attempted for each fault  */
   bool fsim_only;                      /* flag to indicate fault simulation only */
   bool tdfsim_only;                    /* flag to indicate tdfault simulation only */
+  bool is_tdfatpg;
+  bool has_compression;
 
   /* used in input.cpp to parse circuit*/
   int debug;                           /* != 0 if debugging;  this is a switch of debug mode */
