@@ -351,14 +351,14 @@ ATPG::wptr ATPG::get_faulty_wire(const fptr f, int &fault_type) {
     /* this case should not occur,
      * because we do not create fault in the NOT BUF gate input */
     case NOT:
-	if (f->fault_type == 0) fault_type = STF;
-	else fault_type = STR;
-	break;
+      if (f->fault_type == 0) fault_type = STF;
+      else fault_type = STR;
+      break;
     case BUF:
-	if (f->fault_type == 0) fault_type = STR;
-	else fault_type = STF;
+      if (f->fault_type == 0) fault_type = STR;
+      else fault_type = STF;
       //fprintf(stdout, "something is fishy(get_faulty_net)...\n");
-      	break;
+      break;
 
       /*check every gate input of AND
        if any input is zero or unknown, then fault f is not propagated */
