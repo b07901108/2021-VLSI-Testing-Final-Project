@@ -125,10 +125,11 @@ int main(int argc, char *argv[])
     atpg.compute_fault_coverage(); //init_flist.cpp
   atpg.timer(stdout, "for test pattern generation");
   
-  // TODO: check the logic by Chien-Kai (Do we always do compression?)
   if (!atpg.get_tdfsim_only()) {
-    int total_detect_num=0;
     atpg.generate_tdfault_list();//Hao
+  }
+  if (atpg.do_compression()) {
+    int total_detect_num=0;
     atpg.reverse_order_compression(total_detect_num);//Hao
   }
   exit(EXIT_SUCCESS);

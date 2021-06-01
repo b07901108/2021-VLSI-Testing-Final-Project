@@ -96,6 +96,7 @@ public:
   int num_of_tdf_fault{};
   int detected_num{};
   bool get_tdfsim_only() { return tdfsim_only; }
+  bool do_compression() { return has_compression; }
 
   // **************************************************************************
   // Functions  [ Atpg::SCOAPcontrollability ]
