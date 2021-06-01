@@ -100,6 +100,10 @@ class ATPG {
   /* defined in atpg.cpp */
   void test();
 
+  /*STC : by Cheng Hao*/
+  string io_to_pattern();// in display.cpp
+  void reverse_order_compression(int &);
+
 
  private:
 
@@ -131,6 +135,8 @@ class ATPG {
   /* test vector  */
   int in_vector_no;                    /* number of test vectors generated */
   vector<string> vectors;              /* vector set */
+  vector<string> atpg_result;          /* ****Cheng Hao add**** */
+  vector<bool> removable;
 
   /* declared in tpgmain.cpp */
   int backtrack_limit;

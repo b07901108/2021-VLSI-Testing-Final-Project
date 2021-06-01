@@ -89,6 +89,13 @@ int main(int argc, char *argv[]) {
   atpg.test(); //defined in atpg.cpp
   if (!atpg.get_tdfsim_only())atpg.compute_fault_coverage(); //init_flist.cpp
   atpg.timer(stdout, "for test pattern generation");
+
+  // TODO: check the logic by Chien-Kai (Do we always do compression?)
+  if (!atpg.get_tdfsim_only()) {
+    int total_detect_num=0;
+    atpg.generate_tdfault_list();//Hao
+    atpg.reverse_order_compression(total_detect_num);//Hao
+  }
   exit(EXIT_SUCCESS);
 }
 
@@ -99,6 +106,7 @@ void usage() {
   fprintf(stderr, "    -fsim <filename>: fault simulation only; filename provides vectors\n");
   fprintf(stderr, "    -anum <num>: <num> specifies number of vectors per fault\n");
   fprintf(stderr, "    -bt <num>: <num> specifies number of backtracks\n");
+  fprintf(stderr, "    -tdfatpg [-ndet <num>] [-compression]: <num> specifies number of \n");
   exit(EXIT_FAILURE);
 
 } /* end of usage() */

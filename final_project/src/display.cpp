@@ -117,6 +117,49 @@ void ATPG::display_io() {
   fprintf(stdout, "\n");
 }/* end of display_io */
 
+string ATPG::io_to_pattern(){
+  int i;
+  string pattern = "T\'";
+  string vec = "";
+  for (i = 0; i < cktin.size(); i++) {
+    switch (cktin[i]->value) {
+      case 0:
+        pattern += "0";
+        vec     += "0";
+        break;
+      case 1:
+        pattern += ("1");
+        vec     += ("1");
+        break;
+      case U:
+        pattern += ("x");
+        vec     += ("x");
+        break;
+      case D:
+        pattern += ("1");
+        vec     += ("1");
+        break;
+      case D_bar:
+        pattern += ("0");
+        vec     += ("0");
+        break;
+    }
+  }
+  pattern += (" ");
+  if (v2) {
+    pattern += ("1");
+    vec     += ("1");
+  } else {
+    pattern += ("0");
+    vec     += ("0");
+  }
+  pattern += ("'");
+  pattern += ("\n");
+  vectors.push_back(vec);
+  return pattern;
+
+}/* end of io_to_pattern */
+
 
 void ATPG::display_undetect() {
   int i;

@@ -225,9 +225,13 @@ int ATPG::podem(const fptr fault, int &current_backtracks) {
       //assign 
       if(find_pi_assignment(faulty_wire,fault->fault_type)){
         for (i = 0; i < ncktin; i++) {
-          if (cktin[i]->value == U) cktin[i]->value = rand() & 01;
-        }       
-        display_io();
+	
+          if (cktin[i]->value == U) cktin[i]->value = rand() & 01;//x-fill
+          //break;//if not want to x-fill
+	}       
+        string pattern = io_to_pattern();
+        atpg_result.push_back(pattern);
+        //display_io();//store to a vector and compression them
       }
     } else fprintf(stdout, "\n");  // do not random fill when multiple patterns per fault
     return (TRUE);
