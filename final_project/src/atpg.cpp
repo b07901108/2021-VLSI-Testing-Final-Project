@@ -98,6 +98,14 @@ void ATPG::test()
         no_of_calls++;
     }
 
+    if (do_tdfatpg() && do_compression()) {
+        reverse_order_compression(total_detect_num);//Hao
+    }
+
+    for (int i = 0; i< vectors.size() ; ++i){
+      cout << "#" << vectors[i] << "\n";
+    }
+    
     display_undetect();
     fprintf(stdout, "\n");
     fprintf(stdout, "#number of aborted faults = %d\n", no_of_aborted_faults);
@@ -107,8 +115,7 @@ void ATPG::test()
     fprintf(stdout, "#number of calling podem1 = %d\n", no_of_calls);
     fprintf(stdout, "\n");
     fprintf(stdout, "#total number of backtracks = %d\n", total_no_of_backtracks);
-    
-    //reverse_order_compression(total_detect_num);//Hao
+
 } /* end of test */
 
 

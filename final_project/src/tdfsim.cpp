@@ -264,20 +264,26 @@ void ATPG::reverse_order_compression(int &total_detect_num) {//used in atpg.cpp
                 }
         });
 
-        //cout << "#vector[" << i <<"] detects " << num_of_detected << " faults (" << sum_of_detected <<")" << endl;
+        cout << "#vector[" << i <<"] detects " << num_of_detected << " faults (" << sum_of_detected <<")" << endl;
+        
         if (num_of_detected == 0) removable.push_back(1);
         else removable.push_back(0);
     }
     //display Hao
     int num_removed=0;
     for (int i = 0; i< atpg_result.size() ; ++i){
-        if (!removable[atpg_result.size()-i-1]) cout<<atpg_result[i];
-        else {//cout<<"# vector["<< i <<"] is deleted"<<endl ;
-        ++num_removed;
+      if (do_compression()) {
+        if (!removable[atpg_result.size()-i-1]) {
+          cout<<atpg_result[i];
+        } else {//cout<<"# vector["<< i <<"] is deleted"<<endl ;
+          ++num_removed;
         }
-        //cout<<atpg_result[i];
+      } else {
+        cout<<atpg_result[i];
+      }
     }
-    cout << "#STC delete "<<num_removed<<" from "<<atpg_result.size()<<" patters; ";
+
+    cout << "#STC delete "<<num_removed<<" from "<<atpg_result.size()<<" patterns; ";
     cout <<(num_removed*100.00)/atpg_result.size()<<" percent patterns reduce (higher better)"<<endl;
 }
 
@@ -294,7 +300,7 @@ void ATPG::transition_delay_fault_simulation(int &total_detect_num) {
   for (i = vectors.size() - 1; i >= 0; i--) {
     tdfault_sim_a_vector(vectors[i], current_detect_num);
     total_detect_num += current_detect_num;
-    fprintf(stdout, "vector[%d] detects %d faults (%d)\n", i, current_detect_num, total_detect_num);
+    fprintf(stdout, "#vector[%d] detects %d faults (%d)\n", i, current_detect_num, total_detect_num);
   }
 }// fault_simulate_vectors
 

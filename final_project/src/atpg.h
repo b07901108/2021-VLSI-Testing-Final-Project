@@ -97,6 +97,7 @@ public:
   int detected_num{};
   bool get_tdfsim_only() { return tdfsim_only; }
   bool do_compression() { return has_compression; }
+  bool do_tdfatpg() { return is_tdfatpg; }
 
   // **************************************************************************
   // Functions  [ Atpg::SCOAPcontrollability ]
@@ -110,6 +111,7 @@ public:
 
   /* defined in atpg.cpp */
   void test();
+  void ndet_test();
 
   /*STC : by Cheng Hao*/
   string io_to_pattern();// in display.cpp

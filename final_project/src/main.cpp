@@ -119,8 +119,10 @@ int main(int argc, char *argv[])
   atpg.SCOAPcontrollability();
   atpg.SCOAPobservability();
   atpg.timer(stdout, "for running SCOAP");
-
-  atpg.test(); //atpg.cpp
+  if (atpg.detected_num <= 1)
+    atpg.test(); //atpg.cpp
+  else
+    atpg.ndet_test();
   if (!atpg.get_tdfsim_only())
     atpg.compute_fault_coverage(); //init_flist.cpp
   atpg.timer(stdout, "for test pattern generation");
@@ -128,9 +130,12 @@ int main(int argc, char *argv[])
   if (!atpg.get_tdfsim_only()) {
     atpg.generate_tdfault_list();//Hao
   }
-  if (atpg.do_compression()) {
-    int total_detect_num=0;
-    atpg.reverse_order_compression(total_detect_num);//Hao
+  if (atpg.do_tdfatpg()) {
+    //int total_detect_num=0;
+    //atpg.reverse_order_compression(total_detect_num);//Hao
+    atpg.set_tdfsim_only(true);
+    atpg.ndet_test();
+    atpg.set_tdfsim_only(false);
   }
   exit(EXIT_SUCCESS);
 }
