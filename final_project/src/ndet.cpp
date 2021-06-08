@@ -59,7 +59,7 @@ void ATPG::ndet_test() {
         flist_undetect = fault_detected;
 
         timer(stdout, "for running ATPG");
-        cout << "Detecting " << n << "\n";
+        cout << "Detecting " << detected_num << "\n";
         ++n;
     }
 

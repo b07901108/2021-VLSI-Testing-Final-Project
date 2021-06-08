@@ -417,7 +417,10 @@ void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) 
        * the fault is detected */
       if ((f->node->type == OUTPUT) ||
           (f->io == GO && sort_wlist[f->to_swlist]->is_output())) {
-        f->detect = TRUE;
+        f->detected_time++;
+        if (f->detected_time == detected_num) {
+          f->detect = TRUE;
+        }
       } else {
 
         /* if f is an gate output fault */
@@ -459,7 +462,10 @@ void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) 
 
             /* if the faulty_wire is a primary output, it is detected */
             if (faulty_wire->is_output()) {
-              f->detect = TRUE;
+              f->detected_time++;
+              if (f->detected_time == detected_num) {
+                f->detect = TRUE;
+              }
             } else {
               /* if faulty_wire is not already marked as faulty, mark it as faulty
                * and add the wire to the list of faulty wires. */
@@ -539,7 +545,10 @@ void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) 
       } // pop out all faulty wires
       for (i = 0; i < num_of_fault; i++) {
         if (fault_detected[i] == 1) {
-          simulated_fault_list[i]->detect = TRUE;
+          simulated_fault_list[i]->detected_time++;
+          if (simulated_fault_list[i]->detected_time == detected_num) {
+            simulated_fault_list[i]->detect = TRUE;
+          }
         }
       }
       num_of_fault = 0;  // reset the counter of faults in a packet
