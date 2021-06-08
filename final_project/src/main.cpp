@@ -131,8 +131,8 @@ int main(int argc, char *argv[])
     atpg.generate_tdfault_list();//Hao
   }
   if (atpg.do_tdfatpg()) {
-    //int total_detect_num=0;
-    //atpg.reverse_order_compression(total_detect_num);//Hao
+    int total_detect_num=0;
+    atpg.reverse_order_compression(total_detect_num);//Hao
     atpg.set_tdfsim_only(true);
     atpg.ndet_test();
     atpg.set_tdfsim_only(false);

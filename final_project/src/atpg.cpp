@@ -98,10 +98,6 @@ void ATPG::test()
         no_of_calls++;
     }
 
-    if (do_tdfatpg() && do_compression()) {
-        reverse_order_compression(total_detect_num);//Hao
-    }
-
     for (int i = 0; i< vectors.size() ; ++i){
       cout << "#" << vectors[i] << "\n";
     }
