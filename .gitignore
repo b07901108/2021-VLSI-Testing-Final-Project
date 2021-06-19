@@ -1,3 +1,7 @@
 final_project/pattern/*
 final_project/sample_circuits/*
 final_project/tdf_patterns/*
+*.o
+*.tar
+*.tgz
+.vscode/*

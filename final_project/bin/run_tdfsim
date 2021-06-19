@@ -1,0 +1,4 @@
+./golden_tdfsim -tdfsim ../pattern/c17.pat ../sample_circuits/c17.ckt
+./golden_tdfsim -tdfsim ../pattern/c17_8.pat ../sample_circuits/c17.ckt -ndet 8
+./atpg -tdfsim ../pattern/c17.pat ../sample_circuits/c17.ckt
+./atpg -tdfsim ../pattern/c17_8.pat ../sample_circuits/c17.ckt -ndet 8

@@ -1,2 +1,0 @@
-./golden_tdfsim -tdfsim ../tdf_patterns/c17.pat ../sample_circuits/c17.ckt
-

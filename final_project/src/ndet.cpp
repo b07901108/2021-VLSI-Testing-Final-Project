@@ -11,7 +11,6 @@ void ATPG::ndet_test() {
         generate_tdfault_list();
         transition_delay_fault_simulation(total_detect_num);
         in_vector_no += vectors.size();
-        display_undetect();
 
         printf("\n# Result:\n");
         printf("-----------------------\n");
@@ -35,18 +34,21 @@ void ATPG::ndet_test() {
 */
     
     
-
+    std::forward_list<fptr> fault_detected;
     while (n <= max_detected_num) {
+        
+        fault_detected.clear();
+        fptr f;
+        
         // generate single-detect pattern
         detected_num = 1;
         test();
+        
         // tdfsim
         set_tdfsim_only(true);
         detected_num = n;
         ndet_test();
         set_tdfsim_only(false);
-        std::forward_list<fptr> fault_detected;
-        fptr f;
         
         for (const auto &pos : flist) {
             f = pos.get();
@@ -55,7 +57,6 @@ void ATPG::ndet_test() {
                 f->detect = FALSE;
             }
         }
-        
         flist_undetect = fault_detected;
 
         timer(stdout, "for running ATPG");

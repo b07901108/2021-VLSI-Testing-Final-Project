@@ -114,6 +114,11 @@ void ATPG::reverse_order_compression(int &total_detect_num) {//used in atpg.cpp
         for (auto pos = flist_undetect.cbegin(); pos != flist_undetect.cend(); ++pos) {
             f = *pos;
             if (f->detect == REDUNDANT) { continue; } /* ignore redundant faults */
+            if (f->activate == FALSE) {
+              if ((next(pos, 1) == flist_undetect.cend()) && num_of_fault > 0) {
+                goto do_fsim;
+              } else { continue; }
+            } /* ignore redundant faults */
             /* consider only active (aka. excited) fault
             * (sa1 with correct output of 0 or sa0 with correct output of 1) */
             if (f->fault_type != sort_wlist[f->to_swlist]->value && f->activate) {
@@ -199,6 +204,7 @@ void ATPG::reverse_order_compression(int &total_detect_num) {//used in atpg.cpp
             * do the fault simulation */
             if ((num_of_fault == num_of_pattern) || (next(pos, 1) == flist_undetect.cend())) {
                 //cout << "no more fault or full" << endl;
+                do_fsim:
                 /* starting with start_wire_index, evaulate all scheduled wires
                 * start_wire_index helps to save time. */
                 for (int j = start_wire_index; j < nckt; j++) {

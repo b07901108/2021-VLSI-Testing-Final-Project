@@ -98,9 +98,9 @@ void ATPG::test()
         no_of_calls++;
     }
 
-    for (int i = 0; i< vectors.size() ; ++i){
-      cout << "#" << vectors[i] << "\n";
-    }
+    //for (int i = 0; i< vectors.size() ; ++i){
+      //cout << "#" << vectors[i] << "\n";
+    //}
     
     display_undetect();
     fprintf(stdout, "\n");
