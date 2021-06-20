@@ -1,20 +1,20 @@
-./atpg -tdfatpg ../sample_circuits/c17.ckt > ../pattern/c17.pat
-./atpg -tdfatpg ../sample_circuits/c432.ckt > ../pattern/c432.pat
-./atpg -tdfatpg ../sample_circuits/c499.ckt > ../pattern/c499.pat
-./atpg -tdfatpg ../sample_circuits/c880.ckt > ../pattern/c880.pat
-./atpg -tdfatpg ../sample_circuits/c1355.ckt > ../pattern/c1355.pat
-./atpg -tdfatpg ../sample_circuits/c2670.ckt > ../pattern/c2670.pat
-./atpg -tdfatpg ../sample_circuits/c3540.ckt > ../pattern/c3540.pat
-./atpg -tdfatpg ../sample_circuits/c6288.ckt > ../pattern/c6288.pat
-./atpg -tdfatpg ../sample_circuits/c7552.ckt > ../pattern/c7552.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c17.ckt > ../pattern/c17_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c432.ckt > ../pattern/c432_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c499.ckt > ../pattern/c499_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c880.ckt > ../pattern/c880_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c1355.ckt > ../pattern/c1355_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c2670.ckt > ../pattern/c2670_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c3540.ckt > ../pattern/c3540_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c6288.ckt > ../pattern/c6288_8.pat
+./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c7552.ckt > ../pattern/c7552_8.pat
 #=========
-#./atpg -tdfatpg ../sample_circuits/c17.ckt
-#./atpg -tdfatpg ../sample_circuits/c432.ckt
-#./atpg -tdfatpg ../sample_circuits/c499.ckt
-#./atpg -tdfatpg ../sample_circuits/c880.ckt
-#./atpg -tdfatpg ../sample_circuits/c1355.ckt
-#./atpg -tdfatpg ../sample_circuits/c2670.ckt
-#./atpg -tdfatpg ../sample_circuits/c3540.ckt
-#./atpg -tdfatpg ../sample_circuits/c6288.ckt
-#./atpg -tdfatpg ../sample_circuits/c7552.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c17.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c432.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c499.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c880.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c1355.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c2670.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c3540.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c6288.ckt
+#./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c7552.ckt
 

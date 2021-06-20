@@ -91,8 +91,8 @@ public:
   /*defined in tdfsim.cpp*/
   void generate_tdfault_list();
   void transition_delay_fault_simulation(int &);
-  void tdfault_sim_a_vector(const string &, int &);
-  void tdfault_sim_a_vector2(const string &, int &);
+  bool tdfault_sim_a_vector(const string &, int &);
+  bool tdfault_sim_a_vector2(const string &, int &);
   int num_of_tdf_fault{};
   int detected_num{};
   bool get_tdfsim_only() { return tdfsim_only; }
@@ -116,6 +116,8 @@ public:
   /*STC : by Cheng Hao*/
   string io_to_pattern();// in display.cpp
   void reverse_order_compression(int &);
+  // by Chien-Kai
+  void reverse_order_compression_tdf(int &);
 
 
 private:

@@ -293,7 +293,32 @@ void ATPG::reverse_order_compression(int &total_detect_num) {//used in atpg.cpp
     cout <<(num_removed*100.00)/atpg_result.size()<<" percent patterns reduce (higher better)"<<endl;
 }
 
+/* Chien-Kai add*/
+void ATPG::reverse_order_compression_tdf(int &total_detect_num) {//used in atpg.cpp
+  int sum_of_detected = 0, num_of_detected;
+  total_detect_num = 0;
 
+  // TODO: Check if detected_num = n;
+  set_tdfsim_only(true);
+  ndet_test();
+  set_tdfsim_only(false);
+ 
+  int num_removed=0;
+  for (int i = 0; i< atpg_result.size() ; ++i){
+    if (do_compression()) {
+      if (!removable[atpg_result.size()-i-1]) {
+        cout << atpg_result[i];
+      } else {//cout<<"# vector["<< i <<"] is deleted"<<endl ;
+        ++num_removed;
+      }
+    } else {
+      cout << atpg_result[i];
+    }
+  }
+
+  cout << "#STC delete "<<num_removed<<" from "<<atpg_result.size()<<" patterns; ";
+  cout <<(num_removed*100.00)/atpg_result.size()<<" percent patterns reduce (higher better)"<<endl;
+}
 
 
 
@@ -303,14 +328,19 @@ void ATPG::transition_delay_fault_simulation(int &total_detect_num) {
   int current_detect_num = 0;
 
   /* for every vector */
+  removable.clear();
   for (i = vectors.size() - 1; i >= 0; i--) {
-    tdfault_sim_a_vector(vectors[i], current_detect_num);
+    if (tdfault_sim_a_vector(vectors[i], current_detect_num)) {
+      removable.push_back(1);
+    } else {
+      removable.push_back(0);
+    }
     total_detect_num += current_detect_num;
     fprintf(stdout, "#vector[%d] detects %d faults (%d)\n", i, current_detect_num, total_detect_num);
   }
 }// fault_simulate_vectors
 
-void ATPG::tdfault_sim_a_vector(const string &vec, int &num_of_current_detect) {
+bool ATPG::tdfault_sim_a_vector(const string &vec, int &num_of_current_detect) {
   int i, nckt;
   fptr f;
 
@@ -336,12 +366,11 @@ void ATPG::tdfault_sim_a_vector(const string &vec, int &num_of_current_detect) {
       f->activate = FALSE;
   }
 
-  tdfault_sim_a_vector2(vec, num_of_current_detect);
-
+  return tdfault_sim_a_vector2(vec, num_of_current_detect);
 }
 
 /* fault simulate a single test vector */
-void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) {
+bool ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) {
   wptr w, faulty_wire;
   /* array of 16 fptrs, which points to the 16 faults in a simulation packet  */
   fptr simulated_fault_list[num_of_pattern];
@@ -563,10 +592,12 @@ void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) 
   } // end loop. for f = flist
 
   /* fault dropping  */
+  int num_of_detected = 0;
   flist_undetect.remove_if(
       [&](const fptr fptr_ele) {
         if (fptr_ele->detect == TRUE) {
           string IO;
+          ++num_of_detected;
           /*if(fptr_ele->io == GO) IO = "GO";
           else IO = "GI";
           if(fptr_ele->fault_type == STR)
@@ -579,6 +610,8 @@ void ATPG::tdfault_sim_a_vector2(const string &vec, int &num_of_current_detect) 
           return false;
         }
       });
+  if (num_of_detected == 0) return false;
+  else return true;
 
 }/* end of fault_sim_a_vector */
 

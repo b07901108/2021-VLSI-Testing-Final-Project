@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
   }
   if (atpg.do_tdfatpg()) {
     int total_detect_num=0;
-    atpg.reverse_order_compression(total_detect_num);//Hao
+    atpg.reverse_order_compression_tdf(total_detect_num);//Hao
     atpg.set_tdfsim_only(true);
     atpg.ndet_test();
     atpg.set_tdfsim_only(false);
