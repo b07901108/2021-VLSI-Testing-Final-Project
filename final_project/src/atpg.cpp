@@ -130,6 +130,7 @@ ATPG::ATPG()
     this->total_attempt_num = 1; /* default value */
     this->fsim_only = false;     /* flag to indicate fault simulation only */
     this->tdfsim_only = false;   /* flag to indicate tdfault simulation only */
+    this->is_tdfatpg = false;   /* flag to indicate tdfatpg */
 
     /* orginally assigned in input.c */
     this->debug = 0;   /* != 0 if debugging;  this is a switch of debug mode */

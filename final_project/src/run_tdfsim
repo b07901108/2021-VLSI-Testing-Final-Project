@@ -17,4 +17,3 @@
 #./atpg -tdfsim ../tdf_patterns/c3540.pat  ../sample_circuits/c3540.ckt
 #./atpg -tdfsim ../tdf_patterns/c6288.pat  ../sample_circuits/c6288.ckt
 #./atpg -tdfsim ../tdf_patterns/c7552.pat  ../sample_circuits/c7552.ckt
-

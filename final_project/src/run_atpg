@@ -17,4 +17,3 @@
 #./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c3540.ckt
 #./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c6288.ckt
 #./atpg -tdfatpg -compression -ndet 8 ../sample_circuits/c7552.ckt
-
