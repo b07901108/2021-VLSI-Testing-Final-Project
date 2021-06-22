@@ -304,9 +304,11 @@ void ATPG::reverse_order_compression_tdf(int &total_detect_num) {//used in atpg.
   set_tdfsim_only(false);
  
   int num_removed=0;
+  vector<string> new_vectors;
   for (int i = 0; i< atpg_result.size() ; ++i){
     if (do_compression()) {
       if (!removable[atpg_result.size()-i-1]) {
+        new_vectors.push_back(vectors[i]);
         cout << atpg_result[i];
       } else {//cout<<"# vector["<< i <<"] is deleted"<<endl ;
         ++num_removed;
@@ -315,7 +317,8 @@ void ATPG::reverse_order_compression_tdf(int &total_detect_num) {//used in atpg.
       cout << atpg_result[i];
     }
   }
-
+  vectors.clear();
+  vectors = new_vectors;
   cout << "#STC delete "<<num_removed<<" from "<<atpg_result.size()<<" patterns; ";
   cout <<(num_removed*100.00)/atpg_result.size()<<" percent patterns reduce (higher better)"<<endl;
 }
